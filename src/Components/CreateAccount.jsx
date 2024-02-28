@@ -15,6 +15,11 @@ function CreateAccount() {
 
   const [loading, setLoading] = useState(false);
 
+  const create =()=>{
+    let item = {fname,lname,phoneNumber,email,password,confirm}
+    console.warn(item)
+  }
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(true);
@@ -228,20 +233,20 @@ function CreateAccount() {
 
   return (
    <>
-   <div className='flex h-[680px] bg-green-950 m-8'>
-    <div className='text-left mx-8 w-2/5'>
-        <img className='border rounded-full h-28 ml-12 my-12' src={logo} />
+   <div className='flex flex-col md:flex-row bg-emerald-800 m-8 h-[680px]'>
+   <div className='text-left mx-8 md:w-2/5'>
+        <img className=' rounded-full h-52 ml-12 my-5' src={logo} alt="Logo" />
         <h1 className='text-yellow-300 text-4xl my-8 font-medium'>Create Your Account</h1>
         <h1 className='text-yellow-300 text-4xl my-5 font-medium'>Welcome To AI Chef Master</h1>
         <p className='text-white text-3xl'>Where Taste Meets Technology: Experience AI Chef Master</p>
-    </div>
+      </div>
     <div className='bg-yellow-100 w-full border-black rounded-l-3xl'>
-    <h1 className='text-4xl font-medium ml-40 mt-12'>Create Your Account</h1>
-    <form onSubmit={handleSubmit} className="my-5 flex flex-col justify-start gap-y-7 ml-32">
+    <h1 className='text-4xl font-medium ml-8 md:ml-40 mt-12'>Create Your Account</h1>
+    <form onSubmit={handleSubmit} className="my-5 flex flex-col justify-start gap-y-7 ml-8 md:ml-32">
         <div className="md:w-3/5 text-sm flex md:gap-x-5">
             <input 
                 type="text" 
-                className="p-3 bg-yellow-100 border border-black focus:outline-none w-3/4 placeholder-black rounded-lg"
+                className="p-3 bg-yellow-100 border border-black focus:outline-none w-full md:w-3/4 placeholder-black rounded-lg"
                 value={fname}
                 required
                 onChange={(e) => setfName(e.target.value)}
@@ -249,7 +254,7 @@ function CreateAccount() {
             />
             <input 
                 type="text" 
-                className="p-3 bg-yellow-100 border border-black focus:outline-none w-3/4 placeholder-black rounded-lg"
+                className="p-3 bg-yellow-100 border border-black focus:outline-none w-full md:w-3/4 placeholder-black rounded-lg"
                 value={lname}
                 required
                 onChange={(e) => setlName(e.target.value)}
@@ -267,7 +272,7 @@ function CreateAccount() {
             </select>
             <input 
                 type="text" 
-                className="p-3 bg-yellow-100 border border-black  focus:outline-none w-3/4 rounded-lg placeholder-black"
+                className="p-3 bg-yellow-100 border border-black focus:outline-none w-full md:w-3/4 placeholder-black rounded-lg"
                 value={phoneNumber}
                 required
                 onChange={(e) => setPhoneNumber(e.target.value)}
@@ -277,7 +282,7 @@ function CreateAccount() {
         <div className="md:w-3/4 text-sm  flex md:gap-x-24">
             <input 
                 type="text" 
-                className="p-3 bg-yellow-100 border border-black  focus:outline-none w-4/5 placeholder-black rounded-lg"
+                className="p-3 bg-yellow-100 border border-black focus:outline-none w-full md:w-3/4 placeholder-black rounded-lg"
                 value={email}
                 required
                 onChange={(e) => setEmail(e.target.value)}
@@ -287,7 +292,7 @@ function CreateAccount() {
         <div className="md:w-3/5 text-sm  flex md:gap-x-5">
             <input 
                 type="text" 
-                className="p-3 bg-yellow-100 border border-black  focus:outline-none w-3/4 placeholder-black rounded-lg"
+                className="p-3 bg-yellow-100 border border-black focus:outline-none w-full md:w-3/4 placeholder-black rounded-lg"
                 value={password}
                 required
                 onChange={(e) => setPassword(e.target.value)}
@@ -295,30 +300,31 @@ function CreateAccount() {
             />
             <input 
                 type="text" 
-                className="p-3 bg-yellow-100 border border-black  focus:outline-none w-3/4 placeholder-black rounded-lg"
+                className="p-3 bg-yellow-100 border border-black focus:outline-none w-full md:w-3/4 placeholder-black rounded-lg"
                 value={confirm}
                 required
                 onChange={(e) => setConfirm(e.target.value)}
                 placeholder='Confirm Password'
             />
         </div>
-        <button type="submit" className='bg-green-950 p-3 item-center  my-3 w-3/5 text-white text-2xl rounded-lg '>Create Your Account</button>
+        <button type="submit" onClick={create} className='bg-emerald-800 p-3 item-center my-3 w-full md:w-3/5 text-white text-2xl rounded-lg hover:scale-110'>Create Your Account</button>
     </form>
     
-    <div className='flex ml-32'>
-    <p>Already have an account? <Link className="text-green-950 font-medium" to="/login">Login</Link></p>
-    </div>
-    <p className='text-3xl font-medium ml-96 my-5'>Or</p>
-    <div className='ml-40 flex'>
-        <div className='border p-2 rounded-lg border-black flex w-52'>
-            <img className='mr-2' src={google}/>
-            <button className=' font-medium '>Signup With Google</button>
+    <div className='flex ml-8 md:ml-32'>
+          <p>Already have an account? <Link className="text-emerald-800 font-medium" to="/login">Login</Link></p>
         </div>
-        <div className='ml-8 border p-2  rounded-lg border-black flex'>
-            <img className='mr-2' src={microsoft} />
-            <button className=' font-medium '>Signup With Microsoft</button>
+
+        <p className='text-3xl font-medium ml-8 md:ml-96 my-5'>Or</p>
+        <div className='ml-8 md:ml-40 flex flex-col md:flex-row'>
+          <div className='border p-2 rounded-lg border-black flex w-full md:w-52 hover:scale-110'>
+            <img className='mr-2' src={google} alt="Google" />
+            <button className='font-medium '>Signup With Google</button>
+          </div>
+          <div className='mt-4 md:mt-0 md:ml-8 border p-2 rounded-lg border-black flex w-full md:w-64 hover:scale-110'>
+            <img className='mr-2' src={microsoft} alt="Microsoft" />
+            <button className='font-medium '>Signup With Microsoft</button>
+          </div>
         </div>
-    </div>
 </div> 
    </div>
    </>
